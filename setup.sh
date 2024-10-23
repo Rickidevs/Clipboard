@@ -52,14 +52,19 @@ done
 
 if [ ! -d "$DEST_DIR" ]; then
     sudo mkdir -p $DEST_DIR
-    sudo cp -r $SCRIPT_DIR/Clipboard $DEST_DIR/
+    echo -e "${GREEN}Copying files to $DEST_DIR...${NC}"
+    sudo cp  $SCRIPT_DIR/Clipboard.py $DEST_DIR/
 else
-    echo -e "${GREEN}$DEST_DIR already exists, no need to move.${NC}\n"
+    echo -e "${GREEN}$DEST_DIR already exists, checking for Clipboard.py...${NC}\n"
 fi
 
 if [ ! -f "$DEST_DIR/$SCRIPT_NAME" ]; then
     echo -e "${RED}Error: $SCRIPT_NAME not found in $DEST_DIR!${NC}\n"
+    echo -e "${YELLOW}Available files in $DEST_DIR:${NC}"
+    ls -l $DEST_DIR 
     exit 1
+else
+    echo -e "${GREEN}$SCRIPT_NAME found in $DEST_DIR.${NC}"
 fi
 
 echo -e "\n${GREEN}Creating service file...${NC}"
@@ -90,5 +95,5 @@ sudo systemctl start $SERVICE_NAME
 sudo systemctl status $SERVICE_NAME --no-pager
 
 echo -e "\n${YELLOW}-------------------------------------------------------${NC}"
-echo -e "${GREEN}Service has been successfully classified!${NC}"
+echo -e "${GREEN}Service has been successfully set up!${NC}"
 echo -e "${YELLOW}-------------------------------------------------------${NC}\n"
