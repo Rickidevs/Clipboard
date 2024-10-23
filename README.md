@@ -32,7 +32,7 @@ If you want to customize some settings, make changes directly in the Clipboard.p
 
 🔑 **Shortcut Key:** Modify the hotkey at line 72. The default is `CTRL + ALT + V`, but you can change it to any other combination. The `WIN` key can sometimes cause issues on Linux, so adjust as needed.
 
-🪟 **Window Size:** You can change the window dimensions at line 35. The current default size is `400x450`
+🪟 **Window Size:** You can change the window dimensions at line 35. The current default size is `400x360`
 
 🎨 **Window Color:** You can change the window's background color at line 36.
 
