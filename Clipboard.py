@@ -2,7 +2,6 @@ import pyperclip
 import time
 import customtkinter as ctk
 import threading
-import keyboard
 import sys
 
 MAX_HISTORY = 15
@@ -120,7 +119,6 @@ def show_clipboard_history():
     )
     close_btn.pack(side="right")
 
-
     scroll_frame = ctk.CTkScrollableFrame(
         history_window, 
         width=WINDOW_WIDTH, 
@@ -133,7 +131,7 @@ def show_clipboard_history():
     if not clipboard_history:
         ctk.CTkLabel(
             scroll_frame, 
-            text="Pano geçmişi boş...", 
+            text="Clipboard is empty...", 
             text_color="gray",
             font=("Segoe UI", 12)
         ).pack(pady=40)
@@ -165,12 +163,7 @@ root.withdraw()
 monitor_thread = threading.Thread(target=monitor_clipboard, daemon=True)
 monitor_thread.start()
 
-print("Clipboard Manager Pro Aktif.")
-print("Kısayol: Ctrl + Alt + V")
-
-try:
-    keyboard.add_hotkey('ctrl + alt + v', show_clipboard_history)
-except ImportError:
-    print("Hata: Klavye modülü için root yetkisi gerekebilir (sudo).")
+print("Clipboard Manager active.")
+print("Hotkey: Ctrl + Alt + V (configured via XFCE Keyboard Shortcuts)")
 
 root.mainloop()
